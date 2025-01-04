@@ -4,7 +4,7 @@ interface WidgetProps {
   title: string;
   description: string;
   id: number;
-  type: "todo" | "complete"
+  type: "todo" | "complete" | "in-progress";
   onDragStart?: (event: React.DragEvent<HTMLDivElement>) => void;
   onDrop?: (event: React.DragEvent<HTMLDivElement>) => void;
 }

@@ -1,29 +1,31 @@
 import styles from './Widget.module.css'
 
-interface WidgetProps {
+export interface WidgetProps {
+  id: number;
   title: string;
   description: string;
-  id: number;
-  type: "todo" | "complete" | "in-progress";
+  column: number | null;
+  position: number | null;
+  status: "todo" | "inprogress" | "complete";
   onDragStart?: (event: React.DragEvent<HTMLDivElement>) => void;
   onDrop?: (event: React.DragEvent<HTMLDivElement>) => void;
 }
 
 export function Widget({
+  id,
   title,
   description,
-  id,
+  status,
   onDragStart,
-  onDrop,
-  type
+  // onDrop,
 }: WidgetProps) {
-    const className = `${styles.wrapper} ${styles[type]}`;
+    const className = `${styles.wrapper} ${styles[status]}`;
   return (
     <article
       key={id}
       draggable="true"
       onDragStart={onDragStart}
-      onDragEnd={onDrop}
+      // onDragEnd={onDrop}
       className= {className}
 
     >

@@ -4,10 +4,10 @@ import { Widget } from "../Widget/Widget";
 interface ColumnProps {
   title: string;
   items?: Item[];
-  type: "todo" | "complete" | "in-progress";
+  status: "todo" | "complete" | "inprogress";
 }
 
-function Column({ title, items,type }: ColumnProps) {
+function Column({ title, items,status }: ColumnProps) {
   return (
     <div className={styles.column}>
       Column
@@ -19,7 +19,7 @@ function Column({ title, items,type }: ColumnProps) {
             id={item.id}
             title={item.title}
             description={item.description}
-            type={type}
+            status={status}
           />
         ))}
       </div>

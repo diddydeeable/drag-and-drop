@@ -6,13 +6,12 @@ interface ColumnProps {
   children: React.ReactNode;
 }
 
-function Column({ title, children, onDragOver, onDrop }: ColumnProps) {
+export default function Column({ title, children, onDragOver, onDrop }: ColumnProps) {
   return (
     <div className={styles.column} onDragOver={onDragOver} onDrop={onDrop}>
       <h2> {title}</h2>
       {children}
     </div>
   );
-}
+};
 
-export default Column;

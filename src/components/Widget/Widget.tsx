@@ -10,14 +10,14 @@ export interface WidgetProps {
   onDragStart: (event: React.DragEvent<HTMLDivElement>) => void;
 }
 
-export function Widget({
+export default function Widget({
   id,
   title,
   description,
   status,
   onDragStart,
 }: WidgetProps) {
-    const className = `${styles.wrapper} ${styles[status]}`;
+    const className = `${styles.widget} ${styles[status]}`;
   return (
     <article
       key={id}

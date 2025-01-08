@@ -3,6 +3,10 @@
   border-left: 3px solid;
   border-radius: 3px 4px 4px 3px;
   margin-bottom: 32px;
+  width: 500px
+}
+.widget:hover{
+
 }
 .title {
   font-size: 1rem;
@@ -15,10 +19,14 @@
 */
 
 .todo {
-  background-color: hsl(38deg 100% 50% / 0.1);
-  border-color: hsl(30deg 100% 50%);
+  background-color: #DC143C;
 }
+
+.inprogress{
+background-color: #FF8C00;
+}
+
 .complete {
-  background-color: hsl(160deg 100% 40% / 0.1);
-  border-color: hsl(160deg 100% 40%);
+  background-color: #90EE90;
+
 }

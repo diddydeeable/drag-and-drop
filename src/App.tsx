@@ -3,17 +3,17 @@ import Column from "./components/Column/Column";
 import { mockData } from "./utils/data";
 import { useReducer } from "react";
 import { Item } from "./utils/types";
-import { Widget } from "./components/Widget/Widget";
+import Widget from "./components/Widget/Widget";
 
 
 function App() {
-  //initial state
+
   interface widgetState {
     items: Item[]; // The list of all tasks
     draggedWidgetId: number | null; // ID of the currently dragged widget
   }
 
-  // Define the initial state
+
   const initialState: widgetState = {
     items: mockData.map((task, index) => ({
       ...task,

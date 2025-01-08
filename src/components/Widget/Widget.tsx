@@ -7,8 +7,7 @@ export interface WidgetProps {
   column: number | null;
   position: number | null;
   status: "todo" | "inprogress" | "complete";
-  onDragStart?: (event: React.DragEvent<HTMLDivElement>) => void;
-  onDrop?: (event: React.DragEvent<HTMLDivElement>) => void;
+  onDragStart: (event: React.DragEvent<HTMLDivElement>) => void;
 }
 
 export function Widget({
@@ -17,7 +16,6 @@ export function Widget({
   description,
   status,
   onDragStart,
-  // onDrop,
 }: WidgetProps) {
     const className = `${styles.wrapper} ${styles[status]}`;
   return (
@@ -25,7 +23,6 @@ export function Widget({
       key={id}
       draggable="true"
       onDragStart={onDragStart}
-      // onDragEnd={onDrop}
       className= {className}
 
     >

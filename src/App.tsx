@@ -1,10 +1,11 @@
 import "./App.css";
-// import Column from './components/Column/Column'
+import Column from "./components/Column/Column";
 import { mockData } from "./utils/data";
 import { useReducer } from "react";
 import { Item } from "./utils/types";
 import { Widget } from "./components/Widget/Widget";
-// import styles from "src/components/Column/Column.module.css";
+
+
 function App() {
   //initial state
   interface widgetState {
@@ -38,7 +39,6 @@ function App() {
       case "SET_DRAGGED_WIDGET":
         return { ...state, draggedWidgetId: action.payload };
       case "DROP_WIDGET":
-        //  const { id, newColumn, newPosition} = action.payload;
         return {
           ...state,
           items: state.items.map((item) =>
@@ -50,6 +50,7 @@ function App() {
                 }
               : item
           ),
+          draggedWidgetId: null, // Reset draggedWidgetId after dropping
         };
       default:
         return state;
@@ -74,34 +75,30 @@ function App() {
       },
     });
 
-    dispatch({
-      type: "DROP_WIDGET",
-      payload: {
-        id: null,
-        newColumn: null,
-        newPosition: null,
-      },
-    });
+  console.log(`widget ${state.draggedWidgetId} has been dropped`);
   };
 
-  const columns: { id: number; status: "todo" | "inprogress" | "complete" }[] =
-    [
-      { id: 0, status: "todo" },
-      { id: 1, status: "inprogress" },
-      { id: 2, status: "complete" },
-    ];
+  const columns: {
+    id: number;
+    title: string;
+    status: "todo" | "inprogress" | "complete";
+  }[] = [
+    { id: 0, title: "To Do", status: "todo" },
+    { id: 1, title: "In Progress", status: "inprogress" },
+    { id: 2, title: "Complete", status: "complete" },
+  ];
   return (
     <div className="dashboard">
       <h1>Drag and Drop Example</h1>
       <div className="grid-container">
         {columns.map((column) => (
-          <div
+          <Column
             key={column.id}
-            // className={styles.column}
             onDragOver={(e) => e.preventDefault()}
             onDrop={() => handleDrop(column.id)}
+            title={column.title}
           >
-            <h2>Column Name</h2>
+          
             {state.items
               .filter((item) => item.column === column.id)
               .map((item) => (
@@ -115,7 +112,7 @@ function App() {
                   position={item.position}
                 />
               ))}
-          </div>
+          </Column>
         ))}
       </div>
     </div>
